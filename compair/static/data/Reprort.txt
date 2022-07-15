@@ -1,0 +1,54 @@
+DataComPy Comparison
+--------------------
+
+DataFrame Summary
+-----------------
+
+  DataFrame  Columns  Rows
+0  SRC_DATA        5     5
+1  TGT_DATA        5     5
+
+Column Summary
+--------------
+
+Number of columns in common: 4
+Number of columns in SRC_DATA but not in TGT_DATA: 1
+Number of columns in TGT_DATA but not in SRC_DATA: 1
+
+Row Summary
+-----------
+
+Matched on: id
+Any duplicates on match values: No
+Absolute Tolerance: 0
+Relative Tolerance: 0
+Number of rows in common: 5
+Number of rows in SRC_DATA but not in TGT_DATA: 0
+Number of rows in TGT_DATA but not in SRC_DATA: 0
+
+Number of rows with some compared columns unequal: 2
+Number of rows with all compared columns equal: 3
+
+Column Comparison
+-----------------
+
+Number of columns compared with some values unequal: 2
+Number of columns compared with all values equal: 2
+Total number of values which compare unequal: 2
+
+Columns with Unequal Values or Types
+------------------------------------
+
+    Column SRC_DATA dtype TGT_DATA dtype  # Unequal  Max Diff  # Null Diff
+0  country         object         object          1         0            0
+1    place         object         object          1         0            0
+
+Sample Rows with Unequal Values
+-------------------------------
+
+   id country (SRC_DATA) country (TGT_DATA)
+3   4                  I              InDIA
+
+   id place (SRC_DATA) place (TGT_DATA)
+4   5          kolkata          Devgiri
+

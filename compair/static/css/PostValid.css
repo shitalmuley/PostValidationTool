@@ -1,0 +1,94 @@
+#BG{
+    background-attachment: fixed;
+    
+}
+
+.imgstyl 
+{
+   height: 70px;
+   margin-left: 60px;
+}
+
+.navstyl{
+    top: 0px;
+    left: 0px;
+    
+    height: 75px;
+}
+
+.navdark{
+    background-color: black;
+}
+
+
+.txtstyle{
+    /* top: 37px; */
+    left: 727px;
+    width: 467px;
+    height: 50px;
+    /* font-size: 20px; */
+    font: var(--unnamed-font-style-normal) normal var(--unnamed-font-weight-600) var(--unnamed-font-size-40)/var(--unnamed-line-spacing-50) var(--unnamed-font-family-source-sans-pro);
+    letter-spacing: var(--unnamed-character-spacing-0);
+    color: var(--unnamed-color-ffffff);
+    text-align: left;
+    font: normal normal 450 25px/40px Source Sans Pro;
+    letter-spacing: 0px;
+    color: #FFFFFF;
+    opacity: 1;
+    margin-left: 390px;
+    font-weight: bolder;
+}
+
+.navoption{
+margin-right: 30px;
+}
+
+.maxOption{
+ font-weight: bolder;
+}
+
+
+/* CSS NEW ADD  */
+
+.Label-Name{
+    top: 196px;
+    left: 140px;
+    width: 175px;
+    height: 50px;
+    /* UI Properties */
+    font: var(--unnamed-font-style-normal) normal var(--unnamed-font-weight-600) var(--unnamed-font-size-40)/var(--unnamed-line-spacing-50) var(--unnamed-font-family-source-sans-pro);
+    letter-spacing: var(--unnamed-character-spacing-0);
+    color: var(--unnamed-color-000000);
+    text-align: left;
+    font: normal normal 600 30px/66px Source Sans Pro;
+    letter-spacing: 0px;
+    color: #000000;
+    opacity: 1;
+}
+
+.hover-button{
+    background-color: red;
+    color: white;
+}
+
+.hover-button:hover{
+    background-color: white;
+    color: black;
+    border: 1px solid red ;
+    
+}
+
+.hover-button1{
+    background-color: rgba(255, 255, 255, 0.642);
+    color: black;
+    
+    
+    
+}
+
+.hover-button1:hover{
+    background-color: black;
+    color: white;
+    
+}
+

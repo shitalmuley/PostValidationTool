@@ -1,0 +1,273 @@
+<title>SQL</title>
+{% extends 'base.html'%}
+{%block vivek%}
+{%load static %}
+<div class="bg">
+    <div class="bg bg2">
+        <div class="bg bg3"></div>
+    </div>
+</div>
+
+<div class="container">
+    <section id="Database_section">
+    <!-- form start -->
+    <form action="" method="post">
+        <div class="row mt-2 sql CFG" id="db">         
+            <div class="col-md-5">
+                <div class="card-header bg-dark text-white">
+                    <h5>Source DB</h5>
+                </div>
+                
+                <div class="card">
+
+                    <div class="card-body">
+                        <!-- <form action="" method="post" name="register"> -->
+                            {% csrf_token %}
+                            <div class="form-group">
+                                <select class="form-control" id="FormSelect" name="FormSelect">
+                                    <option value="">Select Database</option>
+                                    <option value="ORCL" selected>ORCL</option>
+                                    <option value="MSSQL">MSSQL</option>
+                                    <option value="DB2">DB2</option>
+                                </select>
+
+                                <div id="orcl-div">
+                                    <div class="mt-2">
+                                        <input type="text" name="ip" id="ip" class="form-control" placeholder="IP Address">
+                                    </div>
+                            
+                                    <div class="mt-2">
+                                        <input type="text" name="sid" id="sid" class="form-control" placeholder="SID">
+                                    </div>
+                                    <div class="mt-2">
+                                        <input type="text" name="username" id="username" class="form-control"
+                                            placeholder="Username">
+                                    </div>
+                                    <div class="mt-2 mb-2">
+                                        <input type="password" name="password" id="password" class="form-control"
+                                            placeholder="Password">
+                                    </div>
+    
+                                </div>
+                                <div id="mysql-div" style="display: none;">
+                                    <div class="mt-2">
+                                        <input type="text" name="m_host" id="m_host" class="form-control" placeholder="Host">
+                                    </div>
+                                   
+                                    <div class="mt-2 mb-2">
+                                        <input type="text" name="m_database" id="m_database" class="form-control"
+                                            placeholder="Database">
+                                    </div>
+                                    <div class="mt-2 mb-2">
+                                        <input type="text" name="m_schema" id="m_schema" class="form-control"
+                                            placeholder="Schema">
+                                    </div>
+                                    <div class="mt-2 mb-2">
+                                        <input type="text" name="m_uid" id="m_uid" class="form-control"
+                                            placeholder="Username">
+                                    </div>
+                                    <div class="mt-2">
+                                        <input type="password" name="m_pass" id="m_pass" class="form-control" placeholder="Password">
+                                    </div>
+                                </div>
+                                <!-- db2-div -->
+                                <div id="db2-div"  style="display: none;">
+                                    <div class="mt-2">
+                                        <input type="text" name="db2_host" id="db2_host" class="form-control" placeholder="Host">
+                                    </div>
+                                    <div class="mt-2 mb-2">
+                                        <input type="password" name="db2_port" id="db2_port" class="form-control"
+                                            placeholder="Port">
+                                    </div>                                    
+                                    <div class="mt-2">
+                                        <input type="text" name="db2_uid" id="db2_uid" class="form-control"
+                                            placeholder="Username">
+                                    </div>
+                                    <div class="mt-2">
+                                        <input type="text" name="db2_db" id="db2_db" class="form-control" placeholder="Database Name">
+                                    </div>
+                                    <div class="mt-2 mb-2">
+                                        <input type="password" name="db2_pass" id="db2_pass" class="form-control"
+                                            placeholder="Password">
+                                    </div>
+                                </div>
+                            </div>
+                        
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-2 justify-content-center text-center">
+                <div class="loading">
+                    <span id="span"></span>
+                    <span id="span"></span>
+                    <span id="span"></span>
+                    <span id="span"></span>
+                </div>
+                <button type="submit" class="btn btn-success btn-lg btn-block" name="htmlsubmitbutton1" id="TestConDU" style="margin-top: 200px;" data-toggle="tooltip" data-placement="top" title="Test Database Connection">Test
+                    Connection</button>
+            </div>
+
+
+            <div class="col-md-5 ">
+                <div class="card">
+                    <div class="card-header bg-dark text-white">
+                        <h5>Target DB</h5>
+                    </div>
+
+                    <div class="card-body">
+                        <div class="form-group">
+
+                            <select class="form-control" id="exampleFormControlSelect1" name="exampleFormControlSelect1">
+                                <option value="">Select Database</option>
+                                <option value="orcl1">ORCL</option>
+                                <option value="mssql1">MSSQL</option>
+                                <option value="db21">DB2</option>
+                            </select>
+                            
+                            <div id="orcl-div1">
+                                <div class="mt-2">
+                                    <input type="text" name="ip1" id="ip1" class="form-control" placeholder="IP Address">
+                                </div>
+    
+                                <div class="mt-2">
+                                    <input type="text" name="sid1" id="sid1" class="form-control" placeholder="SID">
+                                </div>
+                                <div class="mt-2">
+                                    <input type="text" name="username1" id="username1" class="form-control"
+                                        placeholder="Username">
+                                </div>
+                                <div class="mt-2 mb-2">
+                                    <input type="password" name="password1" id="password1" class="form-control"
+                                        placeholder="Password">
+                                </div>
+                            </div>
+                            
+
+                            <div id="mysql-div1" style="display: none;">
+                                                        
+                                <div class="mt-2">
+                                    <input type="text" name="m_host1" id="m_host1" class="form-control"
+                                        placeholder="Host">
+                                </div>
+                                
+                                <div class="mt-2 mb-2">
+                                    <input type="text" name="m_database1" id="m_database1" class="form-control"
+                                        placeholder="Database">
+                                </div>
+                                <div class="mt-2 mb-2">
+                                    <input type="text" name="m_uid1" id="m_uid1" class="form-control"
+                                        placeholder="Username">
+                                </div>
+                                <div class="mt-2">
+                                    <input type="password" name="m_pass1" id="m_pass1" class="form-control" placeholder="Password">
+                                </div>
+                                
+                            </div>
+                            <!-- db2-div -->
+                            <div id="db2-div1"  style="display: none;">
+                                <div class="mt-2">
+                                    <input type="text" name="db2_host1" id="db2_host1" class="form-control" placeholder="Host">
+                                </div>
+                                <div class="mt-2 mb-2">
+                                    <input type="password" name="db2_port1" id="db2_port1" class="form-control"
+                                        placeholder="Port">
+                                </div>                                    
+                                <div class="mt-2">
+                                    <input type="text" name="db2_uid1" id="db2_uid1" class="form-control"
+                                        placeholder="Username">
+                                </div>
+                                <div class="mt-2">
+                                    <input type="text" name="db2_db1" id="db2_db1" class="form-control" placeholder="Database Name">
+                                </div>
+                                <div class="mt-2 mb-2">
+                                    <input type="password" name="db2_pass1" id="db2_pass1" class="form-control"
+                                        placeholder="Password">
+                                </div>
+                            </div>
+                            <!-- <button class="btn btn-outline-success btn-sm btn-block">Test Connection</button> -->
+                        </div>
+
+                        <!-- </form> -->
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    <!-- form end -->
+    </form>
+    </section>
+        <section id="table">
+            <form method="post" action="">
+                {% csrf_token %}
+                <div class="row mt-3 ">
+                    <div class="col-md-5">
+                        <div class="card">
+                            <div class="card-body"><b>Source Table List</b>
+                                <select class="form-control select2" name="dropdown1">
+                                    {% for all in Record %}
+                                    <option value="{{all}}">{{all}} </option>
+                                    {% endfor %}
+                                </select>
+
+                                <input type="hidden" name="hostid" value='{{hostid}}'>
+                                <input type="hidden" name="sid" value={{sid}}>
+                                <input type="hidden" name="username" value='{{username}}'>
+                                <input type="hidden" name="password" value={{password}}>
+
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-2 text-center mt-4">
+
+                        <button type="submit" name="htmlsubmitbutton2" class="btn btn-success btn-lg btn-block" data-toggle="tooltip" data-placement="top" title="Click here to compare selected tables">Compare</button>
+                    </div>
+                    <div class="col-md-5">
+                        <div class="card">
+                            <div class="card-body"><b>Target Table List</b>
+                                <select class="form-control select2" name="dropdown2">
+                                    {% for all in table2 %}
+                                    <option value="{{all}}">{{all}} </option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+
+            <!-- <form action="" method="post">
+                {% csrf_token %}
+                <select>
+                  <option selected="selected" disabled>Objects on page:</option>
+                  <option value="10">10</option>
+                  <option value="20">20</option>
+                  <option value="30">30</option>
+                  <option value="40">40</option>
+                  <option value="50">50</option>
+                </select>
+                <input type="submit" value="Select">
+              </form> -->
+        </section>
+
+       
+
+</div>
+
+<div class="row mt-5" id="redcod">
+    <div class="col-md-4">
+
+    </div>
+    <div class="col-md-4">
+        <a href="{%static './TableReprort.txt' %}" class="btn btn-sm btn-block btn-info" download>Comparison Report</a>
+
+        <a href="{%static '.data/TABLE_DIFF.xlsx' %}" target="_blank" class="btn btn-block btn-sm btn-info" download>Comparison File </a>
+    </div>
+    <div class="col-md-4">
+
+    </div>
+</div>
+
+
+{%endblock%}

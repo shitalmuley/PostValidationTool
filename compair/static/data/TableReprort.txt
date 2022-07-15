@@ -1,0 +1,68 @@
+DataComPy Comparison
+--------------------
+
+DataFrame Summary
+-----------------
+
+  DataFrame  Columns  Rows
+0  SRC_DATA       16    20
+1  TGT_DATA       16    20
+
+Column Summary
+--------------
+
+Number of columns in common: 16
+Number of columns in SRC_DATA but not in TGT_DATA: 0
+Number of columns in TGT_DATA but not in SRC_DATA: 0
+
+Row Summary
+-----------
+
+Matched on: trinametx
+Any duplicates on match values: No
+Absolute Tolerance: 0
+Relative Tolerance: 0
+Number of rows in common: 19
+Number of rows in SRC_DATA but not in TGT_DATA: 1
+Number of rows in TGT_DATA but not in SRC_DATA: 1
+
+Number of rows with some compared columns unequal: 4
+Number of rows with all compared columns equal: 15
+
+Column Comparison
+-----------------
+
+Number of columns compared with some values unequal: 2
+Number of columns compared with all values equal: 14
+Total number of values which compare unequal: 4
+
+Columns with Unequal Values or Types
+------------------------------------
+
+             Column SRC_DATA dtype TGT_DATA dtype  # Unequal  Max Diff  # Null Diff
+0  tridescriptiontx         object         object          3         0            0
+1    trilegalnametx         object         object          1         0            0
+
+Sample Rows with Unequal Values
+-------------------------------
+
+             trinametx                                                    tridescriptiontx (SRC_DATA)                      tridescriptiontx (TGT_DATA)
+2          Heron Tower                            A fitting example of contemporary archictecture      A fitting example of contemporary archictecture
+3  Leadenhall Building                             A fitting example of contemporary archictecture     A fitting example of contemporary archictecture
+1    One Canada Square  A fitting example of contemporary archictecture                                A fitting example of contemporary archictecture
+
+         trinametx trilegalnametx (SRC_DATA) trilegalnametx (TGT_DATA)
+11  Rio Sul Center        Rio Sul Center                Rio Sul Center
+
+Sample Rows Only in SRC_DATA (First 10 Columns)
+-----------------------------------------------
+
+                trinametx                                              tridescriptiontx trilegalnametx tricommonnametx  triparkingopennu      tritenurecl tribuildingclasscl trizoningcl       triprimaryusecl                            tridispositionmethodcl
+0  The Shard               A fitting example of contemporary archictecture                   The Shard       The Shard             200.0  Location Tenure     Administration  Commercial  Location Primary Use  3-Normal Preventive Maintenance per Manufacturer
+
+Sample Rows Only in TGT_DATA (First 10 Columns)
+-----------------------------------------------
+
+    trinametx                                 tridescriptiontx trilegalnametx tricommonnametx  triparkingopennu      tritenurecl tribuildingclasscl trizoningcl       triprimaryusecl                            tridispositionmethodcl
+20  The Shard  A fitting example of contemporary archictecture      The Shard       The Shard             200.0  Location Tenure     Administration  Commercial  Location Primary Use  3-Normal Preventive Maintenance per Manufacturer
+

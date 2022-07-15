@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maximo</title>
+</head>
+
+<style>
+    /* .card {
+        width: 500px;
+    } */
+    .download-png {
+        background-color: antiquewhite;
+        border-radius: 50%;
+    }
+
+    .download-png:hover {
+        -ms-transform: rotate(10deg);
+        /* IE 9 */
+        transform: rotate(10deg);
+    }
+</style>
+<!-- Required meta tags -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<!-- <link rel="stylesheet" href="Style.css"> -->
+<!-- <link rel="stylesheet" href="style.css"> -->
+<link rel="stylesheet" href="{%static '/css/PostValid.css' %}">
+
+<!-- <link rel="stylesheet" href="static\css\style.css?{% now "U" %}"/> -->
+<!-- <link rel="stylesheet" href="{%static 'css\demo.css' %}"> -->
+<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+    integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+<link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
+<link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<title>Comparison Report</title>
+
+<body id="BG" style="background-image: url('{% static " img/JLL_BACKGROUND_IMAGE.jpg" %}');">
+
+    <nav class="navbar navstyl navdark">
+        <a>
+            <img class="imgstyl" src="{% static 'img/ibm_maximo_logo.png' %} ">
+            <span class="txtstyle text-white" style="margin-left:335px">Comparison Report</span>
+
+
+            <div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
+
+                <a class="btn btn-outline-light success btn-sm" style="margin-left: 300px; text-decoration:none;"
+                    href="index"><span class=" text-white hove">SQL Table</span></a>
+
+
+                <a class="btn btn-outline-light btn-sm" href="tririga"
+                    style="margin-right: 80px; text-decoration:none;"><span class=" text-white hove">Excel</span></a>
+            </div>
+    </nav>
+
+    <!-- Maximo Template Code Start Here -->
+
+    <div class="container">
+        <div class="row mt-2">
+            <div class="col-md-6">
+
+                <form action="" method="POST">
+                    {% csrf_token %}
+                    <label class="Label-Name">Source DB</label>
+                    <div class="card" id="trans">
+                        <div class="card-body ">
+
+                            <select class="form-control" style="width: 500px;" id="FormSelect" name="FormSelect">
+                                <option value="" selected>Select Database</option>
+                                <option value="ORCL">ORCL</option>
+                                <option value="MSSQL">MSSQL</option>
+                                <option value="DB2">DB2</option>
+                            </select>
+
+                            <div id="orcl-div">
+                                <div class="mt-2">
+                                    <input type="text" name="ip" id="ip" class="form-control" placeholder="IP Address">
+                                </div>
+
+                                <div class="mt-2">
+                                    <input type="text" name="sid" id="sid" class="form-control" placeholder="SID">
+                                </div>
+                                <div class="mt-2">
+                                    <input type="text" name="username" id="username" class="form-control"
+                                        placeholder="Username">
+                                </div>
+                                <div class="mt-2 mb-2">
+                                    <input type="password" name="password" id="password" class="form-control"
+                                        placeholder="Password">
+                                </div>
+
+                            </div>
+                            <div id="mysql-div" style="display: none;">
+                                <div class="mt-2">
+                                    <input type="text" name="m_host" id="m_host" class="form-control"
+                                        value="USAZDCSMAXDB2.delphiprd.am.joneslanglasalle.com:1433/idlmxm1;"
+                                        placeholder="Host">
+                                </div>
+
+                                <div class="mt-2 mb-2">
+                                    <input type="text" name="m_database" id="m_database" class="form-control"
+                                        placeholder="Database">
+                                </div>
+                                <div class="mt-2 mb-2">
+                                    <input type="text" name="m_uid" id="m_uid" class="form-control"
+                                        placeholder="Username">
+                                </div>
+                                <div class="mt-2">
+                                    <input type="password" name="m_pass" id="m_pass" class="form-control"
+                                        placeholder="Password">
+                                </div>
+                            </div>
+                            <!-- db2-div -->
+                            <div id="db2-div" style="display: none;">
+                                <div class="mt-2">
+                                    <input type="text" name="db2_host" id="db2_host" class="form-control"
+                                        placeholder="Host">
+                                </div>
+                                <div class="mt-2 mb-2">
+                                    <input type="password" name="db2_port" id="db2_port" class="form-control"
+                                        placeholder="Port">
+                                </div>
+                                <div class="mt-2">
+                                    <input type="text" name="db2_uid" id="db2_uid" class="form-control"
+                                        placeholder="Username">
+                                </div>
+                                <div class="mt-2">
+                                    <input type="text" name="db2_db" id="db2_db" class="form-control"
+                                        placeholder="Database Name">
+                                </div>
+                                <div class="mt-2 mb-2">
+                                    <input type="password" name="db2_pass" id="db2_pass" class="form-control"
+                                        placeholder="Password">
+                                </div>
+                            </div>
+                            <!-- <div style="margin-top: 10px; height: 31px; width: 500px;">
+                                <input type="text" name="ip" class="form-control" id="ipaddr" placeholder="IP Address"
+                                    value="">
+                            </div>
+
+
+                            <div style="margin-top: 12px; height: 31px; width: 500px;">
+                                <input type="text" name="ip" class="form-control" id="ipaddr" placeholder="SID"
+                                    value="">
+                            </div>
+
+                            <div style="margin-top: 12px; height: 31px; width: 500px;">
+                                <input type="text" name="ip" class="form-control" id="ipaddr" placeholder="Username"
+                                    value="">
+                            </div>
+
+                            <div style="margin-top: 12px; height: 31px; width: 500px;">
+                                <input type="text" name="ip" class="form-control" id="ipaddr" placeholder="Password"
+                                    value="">
+                            </div> -->
+
+                        </div>
+                    </div>
+                </form>
+
+
+
+
+            </div>
+            <div class="col-md-6">
+                <form action="/index" method="POST" id="" name="">
+                    {% csrf_token %}
+                    <label class="Label-Name">Target DB</label>
+                    <div class="card" id="trans">
+                        <div class="card-body ">
+
+                            <select class="form-control" style="width: 500px;" id="exampleFormControlSelect1"
+                                name="exampleFormControlSelect1">
+                                <option value="" selected>Select Database</option>
+                                <option value="ORCL">ORCL</option>
+                                <option value="MSSQL">MSSQL</option>
+                                <option value="DB2">DB2</option>
+                            </select>
+                            <div id="orcl-div1">
+                                <div class="mt-2">
+                                    <input type="text" name="ip1" id="ip1" class="form-control"
+                                        placeholder="IP Address">
+                                </div>
+
+                                <div class="mt-2">
+                                    <input type="text" name="sid1" id="sid1" class="form-control" placeholder="SID">
+                                </div>
+                                <div class="mt-2">
+                                    <input type="text" name="username1" id="username1" class="form-control"
+                                        placeholder="Username">
+                                </div>
+                                <div class="mt-2 mb-2">
+                                    <input type="password" name="password1" id="password1" class="form-control"
+                                        placeholder="Password">
+                                </div>
+                            </div>
+
+
+                            <div id="mysql-div1" style="display: none;">
+
+                                <div class="mt-2">
+                                    <input type="text" name="m_host1" id="m_host1" class="form-control"
+                                        placeholder="Host">
+                                </div>
+
+                                <div class="mt-2 mb-2">
+                                    <input type="text" name="m_database1" id="m_database1" class="form-control"
+                                        placeholder="Database">
+                                </div>
+                                <div class="mt-2 mb-2">
+                                    <input type="text" name="m_uid1" id="m_uid1" class="form-control"
+                                        placeholder="Username">
+                                </div>
+                                <div class="mt-2">
+                                    <input type="password" name="m_pass1" id="m_pass1" class="form-control"
+                                        placeholder="Password">
+                                </div>
+
+                            </div>
+                            <!-- db2-div -->
+                            <div id="db2-div1" style="display: none;">
+                                <div class="mt-2">
+                                    <input type="text" name="db2_host1" id="db2_host1" class="form-control"
+                                        placeholder="Host">
+                                </div>
+                                <div class="mt-2 mb-2">
+                                    <input type="password" name="db2_port1" id="db2_port1" class="form-control"
+                                        placeholder="Port">
+                                </div>
+                                <div class="mt-2">
+                                    <input type="text" name="db2_uid1" id="db2_uid1" class="form-control"
+                                        placeholder="Username">
+                                </div>
+                                <div class="mt-2">
+                                    <input type="text" name="db2_db1" id="db2_db1" class="form-control"
+                                        placeholder="Database Name">
+                                </div>
+                                <div class="mt-2 mb-2">
+                                    <input type="password" name="db2_pass1" id="db2_pass1" class="form-control"
+                                        placeholder="Password">
+                                </div>
+                            </div>
+                            <!-- <div style="margin-top: 10px; height: 31px; width: 500px;">
+                                <input type="text" name="ip" class="form-control" id="ipaddr" placeholder="IP Address"
+                                    value="">
+                            </div>
+
+
+                            <div style="margin-top: 12px; height: 31px; width: 500px;">
+                                <input type="text" name="ip" class="form-control" id="ipaddr" placeholder="SID"
+                                    value="">
+                            </div>
+
+                            <div style="margin-top: 12px; height: 31px; width: 500px;">
+                                <input type="text" name="ip" class="form-control" id="ipaddr" placeholder="Username"
+                                    value="">
+                            </div>
+
+                            <div style="margin-top: 12px; height: 31px; width: 500px;">
+                                <input type="text" name="ip" class="form-control" id="ipaddr" placeholder="Password"
+                                    value="">
+                            </div> -->
+
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div class="row mt-2">
+            <div class="col-md-6">
+                <form action="">
+                    <select class="form-control" style="width: 540px;">
+                        <option value="" selected>Select Table</option>
+                        {% for all in Record %}
+                        <option value="{{all}}">{{all}} </option>
+                        {% endfor %}
+                    </select>
+                </form>
+            </div>
+            <div>
+                <form action="">
+                    <div class="col-md-6 ">
+
+                        <select class="form-control" style="width: 540px;">
+                            <option value="" selected>Select Table</option>
+                            <option value="ORCL">1</option>
+                            <option value="MSSQL">2</option>
+                            <option value="DB2">3</option>
+                        </select>
+                    </div>
+            </div>
+
+            <div class="row mt-4">
+                <div class="col-md-4">
+
+                    <button type="submit" name="htmlsubmitbutton1" id="TestConDU"
+                        style=" margin-left: 315px; border: 1px solid black;  border-radius: 2em; height: 50px; width:230px"
+                        class="btn hover-button1"> <span style="font-weight: bold;">Test Connection</span></button>
+                    <!-- <button type="submit" class="btn btn-success btn-lg btn-block" name="htmlsubmitbutton1" id="TestConDU" style="margin-top: 200px;" data-toggle="tooltip" data-placement="top" title="Test Database Connection">Test
+            Connection</button> -->
+                </div>
+                <!-- COMPRE BUTTON -->
+                <div class="col-md-4">
+                    <button type="submit" name="" value="Create Template"
+                        style="border-radius: 2em; margin-left: 190px; height: 50px; width:230px"
+                        class="btn hover-button   "> <span style="font-weight: bold;">Compare</span></button>
+
+                </div>
+                <div class="col-md-2">
+                    <a href="{%static './TableReprort.txt' %}" data-toggle="tooltip" data-placement="top"
+                        title="Download Report" download>
+                        <img class="download-png " style="margin-left: 150px; margin-top: 2px;"
+                            src="{% static 'img/dd.PNG' %}" width="65px" height="60px">
+                    </a>
+                </div>
+                <div class="col-md-2">
+                    <a href="{%static './TABLE_DIFF.xlsx' %}" target="_blank" data-toggle="tooltip" data-placement="top"
+                        title="Download" download>
+                        <img class="download-png" style="margin-left: 80px; margin-top: 2px;"
+                            src="{% static 'img/Excel.PNG' %}" width="60px" height="60px">
+                    </a>
+                </div>
+            </div>
+
+            </form>
+        </div>
+
+
+
+
+
+</body>
+
+
+
+
+<script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"
+    integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB"
+    crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"
+    integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13"
+    crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+    crossorigin="anonymous"></script>
+<!-- <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+    crossorigin="anonymous"></script> -->
+<script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+    crossorigin="anonymous"></script>
+<!-- optional CDN js -->
+
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<!-- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    crossorigin="anonymous"></script> -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
+
+<!-- <script src="{% static '/js/Post-Valid.js' %}"></script> -->
+<script>
+    $('.select2').select2();
+
+
+    $('#FormSelect').on('change', function (event) {
+        if (this.value == 'MSSQL') {
+            $("#orcl-div").hide();
+            $("#mysql-div").show();
+            $("#db2-div").hide();
+        } else if (this.value == 'DB2') {
+            $("#orcl-div").hide();
+            $("#mysql-div").hide();
+            $("#db2-div").show();
+        } else {
+            $("#orcl-div").show();
+            $("#mysql-div").hide();
+            $("#db2-div").hide();
+        }
+    });
+
+    $('#exampleFormControlSelect1').on('change', function (event) {
+        if (this.value == 'mssql1') {
+            $("#orcl-div1").hide();
+            $("#mysql-div1").show();
+            $("#db2-div1").hide();
+        } else if (this.value == 'db21') {
+            $("#orcl-div1").hide();
+            $("#mysql-div1").hide();
+            $("#db2-div1").show();
+        } else {
+            $("#orcl-div1").show();
+            $("#mysql-div1").hide();
+            $("#db2-div1").hide();
+        }
+    });
+</script>
+
+
+
+
+</html>

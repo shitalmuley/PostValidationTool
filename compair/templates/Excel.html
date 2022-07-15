@@ -1,0 +1,103 @@
+<title>EXCEL</title>
+{% extends 'base.html'%}
+{%block vivek%}
+{%load static %}
+<!-- file section -->
+<style>
+  .file-upload{display:block;text-align:center;font-family: Helvetica, Arial, sans-serif;font-size: 12px;}
+.file-upload .file-select{display:block;border: 2px solid #dce4ec;color: #34495e;cursor:pointer;height:40px;line-height:40px;text-align:left;background:#FFFFFF;overflow:hidden;position:relative;}
+.file-upload .file-select .file-select-button{background:#dce4ec;padding:0 10px;display:inline-block;height:40px;line-height:40px;}
+.file-upload .file-select .file-select-name{line-height:40px;display:inline-block;padding:0 10px;}
+.file-upload .file-select:hover{border-color:#34495e;transition:all .2s ease-in-out;-moz-transition:all .2s ease-in-out;-webkit-transition:all .2s ease-in-out;-o-transition:all .2s ease-in-out;}
+.file-upload .file-select:hover .file-select-button{background:#34495e;color:#FFFFFF;transition:all .2s ease-in-out;-moz-transition:all .2s ease-in-out;-webkit-transition:all .2s ease-in-out;-o-transition:all .2s ease-in-out;}
+.file-upload.active .file-select{border-color:#3fa46a;transition:all .2s ease-in-out;-moz-transition:all .2s ease-in-out;-webkit-transition:all .2s ease-in-out;-o-transition:all .2s ease-in-out;}
+.file-upload.active .file-select .file-select-button{background:#3fa46a;color:#FFFFFF;transition:all .2s ease-in-out;-moz-transition:all .2s ease-in-out;-webkit-transition:all .2s ease-in-out;-o-transition:all .2s ease-in-out;}
+.file-upload .file-select input[type=file]{z-index:100;cursor:pointer;position:absolute;height:100%;width:100%;top:0;left:0;opacity:0;filter:alpha(opacity=0);}
+.file-upload .file-select.file-select-disabled{opacity:0.65;}
+.file-upload .file-select.file-select-disabled:hover{cursor:default;display:block;border: 2px solid #dce4ec;color: #34495e;cursor:pointer;height:40px;line-height:40px;margin-top:5px;text-align:left;background:#FFFFFF;overflow:hidden;position:relative;}
+.file-upload .file-select.file-select-disabled:hover .file-select-button{background:#dce4ec;color:#666666;padding:0 10px;display:inline-block;height:40px;line-height:40px;}
+.file-upload .file-select.file-select-disabled:hover .file-select-name{line-height:40px;display:inline-block;padding:0 10px;}
+</style>
+<div class="container">
+    <!-- BG EFFECT -->
+
+    <div class="bg">
+        <div class="bg bg2">
+            <div class="bg bg3">
+
+            </div>
+        </div>
+
+    </div>
+
+    <h1 class="text-center  mt-2">
+        <img src="{% static 'img/logoE.png' %}" style=" width: 50px; height: 50px;" class="img-fluid  ${3|rounded-top,rounded-right,rounded-bottom,rounded-left,rounded-circle,|}"  />
+        Excel Comparison</h1>
+    <form  method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{form}}
+        <div class="row mt-5 New">
+            <div class="col-md-5 text-center">
+                <label for="" ><h3 style="font-family: American Typewriter, serif;">Source File</h3></label>
+                <input type="file" class="form-control" id="SRC_FILE" name="SRC_FILE" accept=".xlsx" style="border-radius: 10px; opacity: 0.7;  width: 450px;" required/>
+            </div>
+            <!-- <div class="col-md-5 text-center">
+                <div class="file-upload">
+                    <div class="file-select">
+                      <div class="file-select-button" id="fileName">Choose Source File</div>
+                      <div class="file-select-name" id="noFile">No file chosen...</div> 
+                      <input type="file" name="chooseFile" id="customFile" name="SRC_FILE" accept=".xlsx" data-toggle="tooltip" data-placement="top" title="Upload source file here">
+                    </div>
+                </div>
+            </div> -->
+            
+            <div class="col-md-2 text-center mt-2 justify-content-center">
+                <!-- <button class="btn  btn-outline-dark "  type="submit" style="border-radius:10%; margin-top: 28%;">Compare</button> -->
+                <button type="submit" name="htmlsubmitbutton2" class="btn btn-success btn-md btn-block" style="margin-top: 28%;"  data-toggle="tooltip" data-placement="top" title="Compare Files">Compare</button>
+            </div>
+            <div class="col-md-5 text-center">
+                <label for="" ><h3 style="font-family: American Typewriter, serif;">Target File</h3></label>
+                <input type="file" class="form-control" id="TGT_FILE" name="TGT_FILE" accept=".xlsx" style="border-radius: 10px; opacity: 0.7;  width: 450px;" required/>
+            </div>
+            <!-- <div class="col-md-5 text-center">
+                <div class="file-upload">
+                    <div class="file-select">
+                      <div class="file-select-button" id="fileName">Choose Target File</div>
+                      <div class="file-select-name" id="noFile">No file chosen...</div> 
+                      <input type="file" name="chooseFile" id="customFile" name="TGT_FILE" accept=".xlsx" data-toggle="tooltip" data-placement="top" title="Upload target file here">
+                    </div>
+                </div>
+            </div> -->
+            
+            <!-- <div class="col-md-5 text-center">
+                <label for=""><h3 style="font-family: American Typewriter, serif;">Target File</h3></label>
+        
+                <input type="file" class="form-control" id="customFile" name="TGT_FILE"  accept=".xlsx" style="border-radius: 10px; opacity: 0.7;  width: 450px;" required/>
+            </div> -->
+        </div> 
+        <div class="row mt-5 sectio_btn">
+            <div class="col-md-2">
+        
+            </div>
+            <div class="col-md-4">
+                <!-- static url path to retrive the data -->
+                <a href="{%static './Reprort.txt' %}" class="btn btn-md btn-block btn-info" data-toggle="tooltip" data-placement="top" title="Download Comparion Text Report" download><i class="fas fa-download"></i>
+                    Comparison Report</a> 
+            </div>
+            <div class="col-md-4">
+                <!-- static url path to retrive the data -->
+                 
+                <a href="{%static './Output.xlsx' %}" target="_blank" class="btn btn-block btn-md btn-info" data-toggle="tooltip" data-placement="top" title="Download Comparion Excel File" download><i class="fas fa-download"></i>Comparison File </a>
+            </div>
+            <div class="col-md-2">
+        
+            </div>
+        </div>
+    </form>
+</div>
+
+<!-- {%if url%} -->
+<!-- <p>uploaded File: <a href="{{ url }}">{{url}}</a></p> -->
+
+<!-- {% endif%} -->
+{%endblock%}
